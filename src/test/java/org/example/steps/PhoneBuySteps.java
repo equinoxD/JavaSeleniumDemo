@@ -29,7 +29,6 @@ public class PhoneBuySteps {
     public static void setup() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver,30);
         driver.manage().window().maximize();
