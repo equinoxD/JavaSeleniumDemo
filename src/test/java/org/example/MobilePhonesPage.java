@@ -27,7 +27,7 @@ public class MobilePhonesPage {
     }
 
     public void selectModel(String modelName) {
-        WebElement modelElement;
+        WebElement modelElement = null;
 
         switch (modelName) {
             case "Смартфон Xiaomi Redmi Note 8 Pro 6/64GB":
@@ -35,9 +35,6 @@ public class MobilePhonesPage {
                 break;
             case "Смартфон Xiaomi Redmi 8 4/64GB":
                 modelElement = redmiModel;
-                break;
-            default:
-                modelElement = null;
                 break;
         }
 

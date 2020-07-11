@@ -39,7 +39,7 @@ public class PhoneModelPage {
     }
 
     public void loaded(String modelName) {
-        WebElement headerElement;
+        WebElement headerElement = null;
 
         switch (modelName) {
             case "Смартфон Xiaomi Redmi Note 8 Pro 6/64GB":
@@ -47,9 +47,6 @@ public class PhoneModelPage {
                 break;
             case "Смартфон Xiaomi Redmi 8 4/64GB":
                 headerElement = redmiHeader;
-                break;
-            default:
-                headerElement = null;
                 break;
         }
 
@@ -68,7 +65,7 @@ public class PhoneModelPage {
     }
 
     public void assertFieldValue(String fieldName, String fieldValue) {
-        WebElement valueElement;
+        WebElement valueElement = null;
 
         switch (fieldName) {
             case "Вес":
@@ -76,9 +73,6 @@ public class PhoneModelPage {
                 break;
             case "Размеры (ШxВxТ)":
                 valueElement = fieldPhoneSizeValue;
-                break;
-            default:
-                valueElement = null;
                 break;
         }
 
