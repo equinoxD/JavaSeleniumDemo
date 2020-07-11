@@ -1,4 +1,4 @@
-package org.example;
+package org.example.steps;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -6,6 +6,10 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
+import org.example.pages.CatalogPage;
+import org.example.pages.MobilePhonesPage;
+import org.example.pages.PhoneModelPage;
+import org.example.pages.StartPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
