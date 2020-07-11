@@ -20,14 +20,17 @@ public class PhoneModelPage {
     @FindBy(xpath = "//h1[text()='Смартфон Xiaomi Redmi Note 8 Pro 6/64GB']")
     private WebElement redmiNoteHeader;
 
+    @FindBy(xpath = "//h1[text()='Смартфон Xiaomi Redmi 8 4/64GB']")
+    private WebElement redmiHeader;
+
     @FindBy(xpath = "//span[text()='Характеристики']")
     private WebElement tabSpecifications;
 
-    @FindBy(xpath = "//span[text()='Тип']")
-    private WebElement fieldPhoneType;
+    @FindBy(xpath = "//span[text()='Вес']/ancestor::dl//dd")
+    private WebElement fieldPhoneWeightValue;
 
-    @FindBy(xpath = "//span[text()='Тип']/ancestor::dl//dd")
-    private WebElement fieldPhoneTypeValue;
+    @FindBy(xpath = "//span[text()='Размеры (ШxВxТ)']/ancestor::dl//dd")
+    private WebElement fieldPhoneSizeValue;
 
     public void moveToOpenedTab() {
         ArrayList tabs = new ArrayList (driver.getWindowHandles());
@@ -36,18 +39,24 @@ public class PhoneModelPage {
     }
 
     public void loaded(String modelName) {
-        WebElement header;
+        WebElement headerElement;
 
         switch (modelName) {
-            case "Redmi Note 8 Pro 6/64GB":
-                header = redmiNoteHeader;
+            case "Смартфон Xiaomi Redmi Note 8 Pro 6/64GB":
+                headerElement = redmiNoteHeader;
+                break;
+            case "Смартфон Xiaomi Redmi 8 4/64GB":
+                headerElement = redmiHeader;
                 break;
             default:
-                header = null;
+                headerElement = null;
                 break;
         }
 
-        header.isDisplayed();
+        assertThat(headerElement)
+                .isNotNull();
+
+        headerElement.isDisplayed();
     }
 
     public void containsTab(String tabName) {
@@ -62,11 +71,19 @@ public class PhoneModelPage {
         WebElement valueElement;
 
         switch (fieldName) {
-            case "Тип":
-                valueElement = fieldPhoneTypeValue; break;
+            case "Вес":
+                valueElement = fieldPhoneWeightValue;
+                break;
+            case "Размеры (ШxВxТ)":
+                valueElement = fieldPhoneSizeValue;
+                break;
             default:
-                valueElement = null; break;
+                valueElement = null;
+                break;
         }
+
+        assertThat(valueElement)
+                .isNotNull();
 
         assertThat(valueElement.getText())
                 .isEqualTo(fieldValue);

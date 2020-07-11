@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import static org.assertj.core.api.Assertions.*;
 
 public class MobilePhonesPage {
     public WebDriver driver;
@@ -18,22 +19,31 @@ public class MobilePhonesPage {
     @FindBy(xpath = "//a[@title='Смартфон Xiaomi Redmi Note 8 Pro 6/64GB']")
     private WebElement redmiNoteModel;
 
+    @FindBy(xpath = "//a[@title='Смартфон Xiaomi Redmi 8 4/64GB']")
+    private WebElement redmiModel;
+
     public void selectMobileCompany(String blockName) {
         xiaomiCheckbox.click();
     }
 
     public void selectModel(String modelName) {
-        WebElement model;
+        WebElement modelElement;
 
         switch (modelName) {
-            case "Redmi Note 8 Pro 6/64GB":
-                model = redmiNoteModel;
+            case "Смартфон Xiaomi Redmi Note 8 Pro 6/64GB":
+                modelElement = redmiNoteModel;
+                break;
+            case "Смартфон Xiaomi Redmi 8 4/64GB":
+                modelElement = redmiModel;
                 break;
             default:
-                model = null;
+                modelElement = null;
                 break;
         }
 
-        model.click();
+        assertThat(modelElement)
+                .isNotNull();
+
+        modelElement.click();
     }
 }
