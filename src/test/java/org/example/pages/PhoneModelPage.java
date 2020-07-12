@@ -1,13 +1,11 @@
 package org.example.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import static org.assertj.core.api.Assertions.*;
 
-import java.sql.Struct;
 import java.util.ArrayList;
 
 public class PhoneModelPage {
@@ -34,6 +32,7 @@ public class PhoneModelPage {
 
     public void moveToOpenedTab() {
         ArrayList tabs = new ArrayList (driver.getWindowHandles());
+        assertThat(tabs.size()).isEqualTo(2);
         int lastTabIndex = tabs.size() - 1;
         driver.switchTo().window((String) tabs.get(lastTabIndex));
     }
